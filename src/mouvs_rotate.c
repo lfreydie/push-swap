@@ -1,29 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mouvs_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 11:53:14 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/01/30 21:53:34 by lefreydier       ###   ########.fr       */
+/*   Created: 2023/01/30 22:30:35 by lefreydier        #+#    #+#             */
+/*   Updated: 2023/01/31 00:44:45 by lefreydier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int ac, char **av)
+int	mv_ra(t_infos *piles)
 {
-	t_infos	*piles;
+	t_element	*tmp;
+	t_element	*last;
 
-	if (ac < 2)
-		return (0);
-	else if (ac > 2)
-	{
-		piles = ft_init(ac - 1, av + 1);
-		if (!piles)
-			return (-1);
-	}
-	ft_algo(piles);
-	retunr (0);
+	tmp = piles->a;
+	piles->a = tmp->next;
+	tmp->next = NULL;
+	last = ft_lstlast(piles->a);
+	last->next = tmp;
+	return (1);
+}
+
+int	mv_rb(t_infos *piles)
+{
+	t_element	*tmp;
+	t_element	*last;
+
+	tmp = piles->b;
+	piles->b = tmp->next;
+	tmp->next = NULL;
+	last = ft_lstlast(piles->b);
+	last->next = tmp;
+	return (1);
+}
+
+int	mv_rr(t_infos *piles)
+{
+	mv_ra(piles);
+	mv_rb(piles);
+	return (1);
 }

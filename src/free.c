@@ -1,29 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 11:53:14 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/01/30 21:53:34 by lefreydier       ###   ########.fr       */
+/*   Created: 2023/01/30 16:03:53 by lefreydier        #+#    #+#             */
+/*   Updated: 2023/01/30 21:40:23 by lefreydier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int ac, char **av)
+void	ft_free_piles(t_infos *piles)
 {
-	t_infos	*piles;
-
-	if (ac < 2)
-		return (0);
-	else if (ac > 2)
+	if (!piles)
+		return ;
+	else
 	{
-		piles = ft_init(ac - 1, av + 1);
-		if (!piles)
-			return (-1);
+		if (piles->a)
+			ft_free_element(piles->a);
+		if (piles->b)
+			ft_free_element(piles->b);
+		if (piles->tab)
+			free(piles->tab);
+		return (free(piles));
 	}
-	ft_algo(piles);
-	retunr (0);
+}
+
+void	ft_free_element(t_element *lst)
+{
+	t_element	*tmp;
+
+	if (!lst)
+		return ;
+	if (lst)
+	{
+		while (lst)
+		{
+			tmp = lst->next;
+			free(lst);
+			lst = tmp;
+		}
+	}
 }

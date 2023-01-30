@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mouvs_push.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 11:53:14 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/01/30 21:53:34 by lefreydier       ###   ########.fr       */
+/*   Created: 2023/01/30 22:29:59 by lefreydier        #+#    #+#             */
+/*   Updated: 2023/01/30 22:40:11 by lefreydier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int ac, char **av)
+int	mv_pa(t_infos *piles)
 {
-	t_infos	*piles;
+	t_element	*tmp_b;
 
-	if (ac < 2)
+	if (!piles->b)
 		return (0);
-	else if (ac > 2)
-	{
-		piles = ft_init(ac - 1, av + 1);
-		if (!piles)
-			return (-1);
-	}
-	ft_algo(piles);
-	retunr (0);
+	tmp_b = piles->b;
+	piles->b = tmp_b->next;
+	tmp_b->next = piles->a;
+	piles->a = tmp_b;
+	return (1);
+}
+
+int	mv_pb(t_infos *piles)
+{
+	t_element	*tmp_a;
+
+	if (!piles->a)
+		return (0);
+	tmp_a = piles->a;
+	piles->a = tmp_a->next;
+	tmp_a->next = piles->b;
+	piles->b = tmp_a;
+	return (1);
 }
