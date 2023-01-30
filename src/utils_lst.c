@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:35:36 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/01/28 16:40:15 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:42:37 by lefreydier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ t_element	*ft_lstlast(t_element *lst)
 	return (lst);
 }
 
-t_list	*ft_lstnew(void *content)
+t_element	*ft_lstnew(void *content)
 {
-	t_list	*new;
+	t_element	*new;
 
-	new = malloc(sizeof(t_list));
+	new = malloc(sizeof(t_element));
 	if (!new)
 		return (NULL);
-	new->content = content;
+	new->nombre = content;
 	new->next = NULL;
 	return (new);
 }

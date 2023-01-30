@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:51:05 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/01/28 18:52:05 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/01/30 16:11:00 by lefreydier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ t_infos	*init(int len, char **av, t_infos *piles)
 	{
 		piles->a = init_data(av, len);
 		piles->tab = create_tab(av, len);
-		if (!piles->a || !piles->tab)
-			return (free(piles), write(1, "Error\n", 6), NULL);
 		piles->sort_tab = sort_tab(piles->tab, len);
-		if (!piles->sort_tab)
-			return (free(piles->tab), free(piles), write(1, "Error\n", 6), NULL);
+		if (!piles->a || !piles->tab || !piles->sort_tab)
+			return (ft_free_piles(piles), write(1, "Error\n", 6), NULL);
 	}
 	else
-		return (free(piles), write(1, "Error\n", 6), NULL);
+		return (ft_free_piles(piles), write(1, "Error\n", 6), NULL);
 }
 
 t_element	*init_data(char **av, int len)
@@ -68,31 +66,30 @@ int	*create_tab(char **av, int len)
 	return (tab);
 }
 
-
-int	*sort_tab(int *tab, int len)
+int	*sort_tab(char **av, int len)
 {
 	int	i;
 	int	j;
 	int	tmp;
 	int	*sort_tab;
 
-	sort_tab = malloc(sizeof(*sort_tab) * len);
+	sort_tab = create_tab(av, len);
 	if (!sort_tab)
 		return (NULL);
-	ft_memcpy(sort_tab, tab, len);
+	i = 0;
 	while (i < len - 1)
 	{
 		j = i + 1;
 		while (j < len)
 		{
-			if (tab[i] > tab[j])
+			if (sort_tab[i] > sort_tab[j])
 			{
-				tmp = tab[i];
-				tab[i] = tab[j];
-				tab[j] = tmp;
+				tmp = sort_tab[i];
+				sort_tab[i] = sort_tab[j];
+				sort_tab[j] = tmp;
 			}
-			else if (tab[i] == tab[j])
-				return (free(sort_tab), NULL);
+			else if (sort_tab[i] == sort_tab[j])
+				return (NULL);
 			j++;
 		}
 		i++;
