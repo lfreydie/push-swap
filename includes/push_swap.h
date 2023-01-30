@@ -6,7 +6,7 @@
 /*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:54:52 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/01/31 00:40:17 by lefreydier       ###   ########.fr       */
+/*   Updated: 2023/01/31 00:56:42 by lefreydier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_infos
 	t_element	*a;
 	t_element	*b;
 	int			*tab;
+	int			size;
 }	t_infos;
 
 // init.c
@@ -49,5 +50,20 @@ t_element	*ft_lstlast(t_element *lst);
 // free.c
 void		ft_free_piles(t_infos *piles);
 void		ft_free_element(t_element *lst);
+// mouvs_swap.c
+int			mv_sa(t_infos *piles)
+int			mv_sb(t_infos *piles)
+int			mv_ss(t_infos *piles)
+// mouvs_push.c
+int			mv_pa(t_infos *piles);
+int			mv_pb(t_infos *piles);
+// mouvs_rotate.c
+int			mv_ra(t_infos *piles)
+int			mv_rb(t_infos *piles)
+int			mv_rr(t_infos *piles)
+// mouvs_rev_rot.c
+int			mv_rra(t_infos *piles)
+int			mv_rrb(t_infos *piles)
+int			mv_rrr(t_infos *piles)
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:51:05 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/01/30 21:44:45 by lefreydier       ###   ########.fr       */
+/*   Updated: 2023/01/31 00:48:47 by lefreydier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_infos	*init(int len, char **av)
 		piles->a = init_data(av, len);
 		if (!piles->a || !piles->tab)
 			return (ft_free_piles(piles), write(1, "Error\n", 6), NULL);
+		piles->size = len;
 	}
 	else
 		return (ft_free_piles(piles), write(1, "Error\n", 6), NULL);
