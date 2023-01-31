@@ -6,7 +6,7 @@
 /*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:53:14 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/01/30 21:53:34 by lefreydier       ###   ########.fr       */
+/*   Updated: 2023/01/31 01:02:22 by lefreydier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int	main(int ac, char **av)
 		if (!piles)
 			return (-1);
 	}
-	ft_algo(piles);
-	retunr (0);
+	if (piles->size > 5)
+		algo_gd(piles);
+	else
+		algo_pt(piles);
+	return (0);
 }
