@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:51:05 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/01/31 00:48:47 by lefreydier       ###   ########.fr       */
+/*   Updated: 2023/02/07 15:26:14 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,33 +23,34 @@ t_infos	*init(int len, char **av)
 	if (parse(av, len))
 	{
 		piles->tab = create_tab(av, len);
-		piles->a = init_data(av, len);
-		if (!piles->a || !piles->tab)
+		if (!piles->tab)
+			return (ft_free_piles(piles), write(1, "Error\n", 6), NULL);
+		piles->a = init_data(av, len, piles->tab);
+		if (!piles->a)
 			return (ft_free_piles(piles), write(1, "Error\n", 6), NULL);
 		piles->size = len;
+		piles->size_a = piles->size;
+		piles->size_b = 0;
 	}
 	else
 		return (ft_free_piles(piles), write(1, "Error\n", 6), NULL);
 	return (piles);
 }
 
-t_element	*init_data(char **av, int len)
+t_element	*init_data(char **av, int len, int *tab)
 {
 	t_element	*list;
 	t_element	*new;
 	int			i;
 
 	i = 0;
+	list = ft_lstnew(atoi(av[i]), tab);
 	if (!list)
-	{
-		list = ft_lstnew(atoi(av[i]));
-		if (!list)
-			return (NULL);
-		i++;
-	}
+		return (NULL);
+	i++;
 	while (i < len)
 	{
-		new = ft_lstadd_back(list, new, ft_atoi(av[i]));
+		new = ft_lstadd_back(list, ft_atoi(av[i]), tab);
 		if (!new)
 			return (NULL);
 		i++;
@@ -61,6 +62,7 @@ int	*create_tab(char **av, int len)
 {
 	int	*tab;
 	int	i;
+	int	success;
 
 	i = 0;
 	tab = malloc(sizeof(*tab) * len);
@@ -71,18 +73,20 @@ int	*create_tab(char **av, int len)
 		tab[i] = ft_atoi(av[i]);
 		i++;
 	}
-	sort_tab(tab, len);
+	success = sort_tab(tab, len);
+	if (!success)
+		return (NULL);
 	return (tab);
 }
 
-void	sort_tab(int *tab, int len)
+int	sort_tab(int *tab, int len)
 {
 	int	i;
 	int	j;
 	int	tmp;
 
 	if (!tab)
-		return (NULL);
+		return (0);
 	i = 0;
 	while (i < len - 1)
 	{
@@ -96,9 +100,10 @@ void	sort_tab(int *tab, int len)
 				tab[j] = tmp;
 			}
 			else if (tab[i] == tab[j])
-				return (NULL);
+				return (0);
 			j++;
 		}
 		i++;
 	}
+	return (1);
 }

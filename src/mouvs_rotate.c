@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouvs_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 22:30:35 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/01/31 00:44:45 by lefreydier       ###   ########.fr       */
+/*   Updated: 2023/02/07 13:03:24 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ int	mv_ra(t_infos *piles)
 
 	tmp = piles->a;
 	piles->a = tmp->next;
+	piles->a->prev = NULL;
 	tmp->next = NULL;
 	last = ft_lstlast(piles->a);
 	last->next = tmp;
+	tmp->prev = last;
 	return (1);
 }
 
@@ -32,9 +34,11 @@ int	mv_rb(t_infos *piles)
 
 	tmp = piles->b;
 	piles->b = tmp->next;
+	piles->b->prev = NULL;
 	tmp->next = NULL;
 	last = ft_lstlast(piles->b);
 	last->next = tmp;
+	tmp->prev = last;
 	return (1);
 }
 

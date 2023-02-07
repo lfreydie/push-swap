@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouvs_swap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:55:16 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/01/30 22:33:30 by lefreydier       ###   ########.fr       */
+/*   Updated: 2023/02/07 12:02:35 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	mv_sa(t_infos *piles)
 	tmp_a_f = piles->a;
 	tmp_a_s = piles->a->next;
 	tmp_a_f->next = tmp_a_s->next;
+	tmp_a_f->prev = tmp_a_s;
 	tmp_a_s->next = tmp_a_f;
+	tmp_a_s->prev = NULL;
 	piles->a = tmp_a_s;
 	return (1);
 }
@@ -37,7 +39,9 @@ int	mv_sb(t_infos *piles)
 	tmp_b_f = piles->b;
 	tmp_b_s = piles->b->next;
 	tmp_b_f->next = tmp_b_s->next;
+	tmp_b_f->prev = tmp_b_s;
 	tmp_b_s->next = tmp_b_f;
+	tmp_b_s->prev = NULL;
 	piles->b = tmp_b_s;
 	return (1);
 }

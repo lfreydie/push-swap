@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:12:10 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/01/30 15:55:00 by lefreydier       ###   ########.fr       */
+/*   Updated: 2023/02/07 15:36:26 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	ft_isnbr(const char *str)
 		sign *= -1;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
-	if (!ft_isdigit(str[i]))
+	if (!(str[i] >= '0' && str[i] <= '9'))
 		return (0);
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (!(str[i] >= '0' && str[i] <= '9'))
 			return (0);
 		else
 			nb = nb * 10 + (str[i] - 48);
@@ -63,4 +63,23 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	return (sign * res);
+}
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+int	ft_show(int success, char *cmd)
+{
+	if (success)
+	{
+		printf("%s\n", cmd);
+	}
+	return (success);
 }
