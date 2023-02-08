@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:12:10 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/07 15:36:26 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/07 22:27:48 by lefreydier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,21 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-int	ft_show(int success, char *cmd)
+int	ft_show(t_infos *piles, int success, char *cmd)
 {
+	t_mouvs	*new;
+
 	if (success)
 	{
-		printf("%s\n", cmd);
+		if (!piles->mouvs)
+		{
+			new = ft_lstnew_mv(cmd);
+			piles->mouvs = new;
+		}
+		else
+			new = ft_lstadd_back_mv(piles->mouvs, cmd);
+		if (!new)
+			return (0);
 	}
 	return (success);
 }
