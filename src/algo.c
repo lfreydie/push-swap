@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:54:23 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/09 15:55:10 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:57:48 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,26 +84,4 @@ void	algo_gd(t_infos *piles)
 void	algo_rrange(t_infos *piles)
 {
 	(void)piles;
-}
-
-int	ft_pa(t_infos *piles, int limit)
-{
-	int	count_rb;
-	int	count_rrb;
-
-	count_rb = ft_find_count_ra(piles->b, limit);
-	count_rrb = ft_find_count_rra(piles->b, limit);
-	if (count_rb <= count_rrb)
-	{
-		while (count_rb-- > 0)
-			ft_show(piles, mv_ra(piles), "rb");
-		ft_show(piles, mv_pb(piles), "pa");
-	}
-	else if (count_rb > count_rrb)
-	{
-		while (count_rrb-- > 0)
-			ft_show(piles, mv_rra(piles), "rrb");
-		ft_show(piles, mv_pb(piles), "pa");
-	}
-	return (1);
 }
