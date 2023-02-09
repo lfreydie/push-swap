@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:54:23 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/08 17:20:28 by lefreydier       ###   ########.fr       */
+/*   Updated: 2023/02/09 12:21:09 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ void	algo_gd(t_infos *piles)
 		div = piles->size_a / 3;
 		mod = piles->size_a % 3;
 		if (div < 3)
-			piles->size_a -= ft_pb(piles, piles->a, piles->size - 3);
+			ft_pb(piles, piles->a, piles->size - 3);
 		else
 		{
 			while (piles->size_a > (n - (2 * div)))
 			{
-				piles->size_a -= ft_pb(piles, piles->a, piles->size - (div + mod));
+				ft_pb(piles, piles->a, piles->size - (div + mod));
 				if (piles->b->rank > piles->size - (mod + (2 * div)))
 					ft_show(piles, mv_rb(piles), "rb");
 			}
@@ -84,7 +84,7 @@ void	algo_gd(t_infos *piles)
 
 void	algo_rrange(t_infos *piles)
 {
-
+	(void)piles;
 }
 
 int	ft_pa(t_infos *piles, int limit)
@@ -106,6 +106,5 @@ int	ft_pa(t_infos *piles, int limit)
 			ft_show(piles, mv_rra(piles), "rrb");
 		ft_show(piles, mv_pb(piles), "pa");
 	}
-	piles->size_b += 1;
 	return (1);
 }

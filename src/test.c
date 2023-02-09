@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:55:50 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/08 15:11:07 by lefreydier       ###   ########.fr       */
+/*   Updated: 2023/02/09 12:19:14 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,11 @@ int	ft_pb(t_infos *piles, t_element *lst, int limit)
 	// 	return ;
 	if (count_ra <= count_rra)
 	{
-		while (count_ra-- > 0)
+		while (count_ra > 0)
+		{
 			ft_show(piles, mv_ra(piles), "ra");
+			count_ra--;
+		}
 		ft_show(piles, mv_pb(piles), "pb");
 	}
 	else if (count_ra > count_rra)
@@ -60,7 +63,6 @@ int	ft_pb(t_infos *piles, t_element *lst, int limit)
 			ft_show(piles, mv_rra(piles), "rra");
 		ft_show(piles, mv_pb(piles), "pb");
 	}
-	piles->size_b += 1;
 	return (1);
 }
 

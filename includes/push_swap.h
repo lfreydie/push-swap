@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:54:52 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/08 15:33:11 by lefreydier       ###   ########.fr       */
+/*   Updated: 2023/02/09 11:52:27 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int			sort_tab(int *tab, int len);
 void		algo(t_infos *piles);
 void		algo_pt(t_infos *piles);
 void		algo_gd(t_infos *piles);
+void		algo_rrange(t_infos *piles);
 // utils.c
 int			ft_isnbr(const char *str);
 int			ft_atoi(const char *nptr);
