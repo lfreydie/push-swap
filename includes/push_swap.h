@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:54:52 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/09 11:52:27 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:53:55 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,13 @@ t_mouvs		*ft_lstlast_mv(t_mouvs *lst);
 // test.c
 int			correct(t_element *lst);
 int			parse(char **av, int len);
+// test_pb.c
 int			ft_pb(t_infos *piles, t_element *lst, int limit);
 int			ft_find_count_ra(t_element	*lst, int limit);
 int			ft_find_count_rra(t_element	*lst, int limit);
+// test_pa.c
+void		ft_pa(t_infos *piles);
+int			count_correct(t_infos *piles, t_element *last);
 // free.c
 void		ft_free_piles(t_infos *piles);
 void		ft_free_element(t_element *lst);

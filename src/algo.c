@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:54:23 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/09 12:21:09 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:55:10 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	algo(t_infos *piles)
 	else
 	{
 		algo_gd(piles);
-
+		algo_rrange(piles);
 	}
 	ft_show_mouvs(piles);
 }
@@ -79,7 +79,6 @@ void	algo_gd(t_infos *piles)
 		}
 	}
 	algo_pt(piles);
-	algo_rrange(piles);
 }
 
 void	algo_rrange(t_infos *piles)
