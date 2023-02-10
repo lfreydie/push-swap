@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_pa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morganeberthod <morganeberthod@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:22:02 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/09 15:53:48 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/10 12:16:11 by morganebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_pa(t_infos *piles)
 	int	count_last_tmp;
 
 	count_first = ft_count_pb(piles, piles->b);
-	count_last = ft_count_pb(piles, ft_lstlast(piles->b));
+	count_last = ft_count_pb(piles, ft_lstlast(piles->b)) + 1;
 	count_last_tmp = count_last - count_correct(piles, ft_lstlast(piles->b));
 	if (count_first > count_last_tmp)
 	{
@@ -56,4 +56,42 @@ int	count_correct(t_infos *piles, t_element *last)
 	if (last->rank < piles->a->rank && last->rank < last_a->rank)
 		return (1);
 	return (0);
+}
+
+int	ft_count_pb(t_infos *piles, t_element *obj_b)
+{
+	t_element	*first_a;
+	t_element	*last_a;
+	int			count;
+	
+	first_a = piles->a;
+	last_a = ft_lstlast(piles->a);
+	count = 0;
+	while (first_a)
+	{
+		if (first_a->rank > obj_b->rank)
+		{
+			if (first_a->rank < last_a->rank)
+			{
+				//ra
+			}
+			else if (first_a->rank > last_a->rank)
+			{
+				if (obj_b->rank > last_a->rank)	
+					return (count);
+				else if (obj_b->rank < last_a->rank)
+					//rra	
+			}
+		}
+		else if (first_a->rank < obj_b->rank)
+		{
+			if (obj_b->rank > last_a->rank)
+			{
+				if (last_a->rank > first_a->rank)
+					return (count);
+				else
+					//ra
+			}
+		}
+	}
 }

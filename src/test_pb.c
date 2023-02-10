@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_pb.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morganeberthod <morganeberthod@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:21:01 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/09 15:21:35 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/10 11:45:44 by morganebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_find_count_ra(t_element	*lst, int limit)
 	count = 0;
 	while (lst)
 	{
-		if (lst->nombre <= limit)
+		if (lst->rank <= limit)
 			return (count);
 		lst = lst->next;
 		count++;
@@ -60,7 +60,7 @@ int	ft_find_count_rra(t_element	*lst, int limit)
 	lst = ft_lstlast(lst);
 	while (lst)
 	{
-		if (lst->nombre <= limit)
+		if (lst->rank <= limit)
 			return (count);
 		lst = lst->prev;
 		count++;
