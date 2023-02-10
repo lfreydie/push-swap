@@ -6,7 +6,7 @@
 /*   By: morganeberthod <morganeberthod@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:22:02 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/10 12:16:11 by morganebert      ###   ########.fr       */
+/*   Updated: 2023/02/10 15:55:53 by morganebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,14 @@ int	ft_count_pb(t_infos *piles, t_element *obj_b)
 	{
 		if (first_a->rank > obj_b->rank)
 		{
-			if (first_a->rank < last_a->rank)
+			if (obj_b->rank > last_a->rank)
+				return (count);
+			else if (obj_b->rank < last_a->rank)
 			{
-				//ra
-			}
-			else if (first_a->rank > last_a->rank)
-			{
-				if (obj_b->rank > last_a->rank)	
+				if (first_a->rank > last_a->rank)	
+					//ra (ou rra)
+				else if (first_a->rank < last_a->rank)
 					return (count);
-				else if (obj_b->rank < last_a->rank)
-					//rra	
 			}
 		}
 		else if (first_a->rank < obj_b->rank)
@@ -90,8 +88,10 @@ int	ft_count_pb(t_infos *piles, t_element *obj_b)
 				if (last_a->rank > first_a->rank)
 					return (count);
 				else
-					//ra
+					//rra
 			}
+			else if (obj_b->rank < last_a->rank)
+				//ra (ou rra)
 		}
 	}
 }
