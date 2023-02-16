@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:54:52 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/09 15:53:55 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:45:57 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int			ft_show(t_infos *piles, int success, char *cmd);
 t_element	*ft_lstnew(int nombre, int *tab);
 t_element	*ft_lstadd_back(t_element *lst, int nombre, int *tab);
 t_element	*ft_lstlast(t_element *lst);
+int			ft_lst_pt(t_infos *piles);
 // utils_lst_mv.c
 int			ft_show_mouvs(t_infos *piles);
 t_mouvs		*ft_lstnew_mv(char *content);

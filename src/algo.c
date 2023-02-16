@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:54:23 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/09 15:57:48 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:08:44 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,8 @@ void	algo_gd(t_infos *piles)
 
 void	algo_rrange(t_infos *piles)
 {
-	(void)piles;
+	while (piles->size_b)
+	{
+		
+	}
 }
