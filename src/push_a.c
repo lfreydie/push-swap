@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:22:02 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/17 14:25:49 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:15:42 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	ft_pa(t_infos *piles)
 	elem = NULL;
 	while (piles->b)
 	{
-		elem = ft_find_elem(piles);
-		ft_mv_pa(piles, elem, ft_count_a(piles, elem), ft_count_b(piles, elem));
+		elem = find_elem(piles);
+		ft_mv_pa(piles, ft_count_a(piles, elem), ft_count_b(piles, elem));
 		stock(piles, mv_pa(piles), "pa");
 	}
 	while (piles->a->rank != 1)
@@ -31,7 +31,7 @@ t_element	*find_elem(t_infos *piles)
 {
 	t_element	*lst;
 	t_element	*elem;
-	uint		range_up;
+	int			range_up;
 	int			minmv;
 	int			mv;
 
@@ -41,8 +41,8 @@ t_element	*find_elem(t_infos *piles)
 	{
 		if (lst->range == range_up)
 		{
-			minmv = count_mv(piles, ft_count_a(piles, elem), \
-					ft_count_b(piles, elem));
+			minmv = count_mv(piles, ft_count_a(piles, lst), \
+					ft_count_b(piles, lst));
 			if (minmv < mv)
 			{
 				mv = minmv;
@@ -58,8 +58,8 @@ int	count_mv(t_infos *piles, int mv_a, int mv_b)
 {
 	if ((mv_a > (piles->size_a / 2)) && (mv_b > (piles->size_b / 2)))
 	{
-		mv_a = piles_->size_a - mv_a;
-		mv_b = piles_->size_b - mv_b;
+		mv_a = piles->size_a - mv_a;
+		mv_b = piles->size_b - mv_b;
 	}
 	if ((mv_a <= (piles->size_a / 2)) && (mv_b <= (piles->size_b / 2)))
 	{
@@ -69,13 +69,13 @@ int	count_mv(t_infos *piles, int mv_a, int mv_b)
 			return (mv_b);
 	}
 	else if ((mv_a > (piles->size_a / 2)))
-		mv_a = piles_->size_a - mv_a;
+		mv_a = piles->size_a - mv_a;
 	else if ((mv_b > (piles->size_b / 2)))
-		mv_b = piles_->size_b - mv_b;
+		mv_b = piles->size_b - mv_b;
 	return (mv_a + mv_b);
 }
 
-void	ft_mv_pa(t_infos *piles, t_element *elem, int mv_a, int mv_b)
+void	ft_mv_pa(t_infos *piles, int mv_a, int mv_b)
 {
 	while ((mv_a > 0 && mv_a <= piles->size_a) || \
 		(mv_b > 0 && mv_b <= piles->size_b))

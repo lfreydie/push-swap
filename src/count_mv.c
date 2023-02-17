@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:00:10 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/17 12:51:30 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/17 14:42:56 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	is_framed(int obj, int first, int last)
 int	test_mv_ra(t_element *first, t_element *last)
 {
 	last = first;
-	first = first->next;
+	first = last->next;
 	return (1);
 }
 

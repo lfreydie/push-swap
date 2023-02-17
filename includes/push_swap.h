@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:54:52 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/17 14:32:49 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/17 14:45:53 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int			stock(t_infos *piles, int success, char *cmd);
 t_element	*ft_lstnew(int nombre, int *tab);
 t_element	*ft_lstadd_back(t_element *lst, int nombre, int *tab);
 t_element	*ft_lstlast(t_element *lst);
-uint		find_range_up(t_element *lst);
+int			find_range_up(t_element *lst);
 // utils_lst_mv.c
 int			ft_show_mouvs(t_infos *piles);
 t_mouvs		*ft_lstnew_mv(char *content);
@@ -74,7 +74,7 @@ int			parse(char **av, int len);
 void		ft_pa(t_infos *piles);
 t_element	*find_elem(t_infos *piles);
 int			count_mv(t_infos *piles, int mv_a, int mv_b);
-void		ft_mv_pa(t_infos *piles, t_element *elem, int mv_a, int mv_b);
+void		ft_mv_pa(t_infos *piles, int mv_a, int mv_b);
 // push_b.c
 void		ft_push_b(t_infos *piles, t_element *lst, int limit);
 void		organize_b(t_infos *piles, int chunk, int reste);

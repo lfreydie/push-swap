@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:54:23 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/17 14:26:20 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:24:46 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ void	pb_pre_tri(t_infos *piles)
 		chunk = piles->size_a / 3;
 		reste = piles->size_a % 3;
 		if (chunk < 3)
+		{
 			ft_push_b(piles, piles->a, piles->size - 3);
+			piles->b->range = piles->size;
+		}
 		else
 		{
 			while (piles->size_a > (piles->size_a - (2 * chunk)))
