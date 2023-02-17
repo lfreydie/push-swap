@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:12:10 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/07 22:27:48 by lefreydier       ###   ########.fr       */
+/*   Updated: 2023/02/17 10:22:23 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-int	ft_show(t_infos *piles, int success, char *cmd)
+int	stock(t_infos *piles, int success, char *cmd)
 {
 	t_mouvs	*new;
 

@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:35:36 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/16 13:13:59 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/17 12:46:40 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_element	*ft_lstnew(int nombre, int *tab)
 			new->rank = i + 1;
 		i++;
 	}
+	new->range = 0;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);
@@ -57,4 +58,18 @@ t_element	*ft_lstlast(t_element *lst)
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
+}
+
+uint	find_range_up(t_element *lst)
+{
+	uint	range_up;
+
+	range_up = 0;
+	while (lst)
+	{
+		if (range_up < lst->range)
+			range_up = lst->range;
+		lst = lst->next;
+	}
+	return (range_up);
 }

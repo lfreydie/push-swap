@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:54:52 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/16 12:45:57 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/17 14:32:49 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 typedef struct s_element
 {
 	int					nombre;
-
 	int					rank;
+	int					range;
 	struct s_element	*prev;
 	struct s_element	*next;
 }	t_element;
@@ -51,18 +51,17 @@ int			sort_tab(int *tab, int len);
 // algo.c
 void		algo(t_infos *piles);
 void		algo_pt(t_infos *piles);
-void		algo_gd(t_infos *piles);
-void		algo_rrange(t_infos *piles);
+void		pb_pre_tri(t_infos *piles);
 // utils.c
 int			ft_isnbr(const char *str);
 int			ft_atoi(const char *nptr);
 int			ft_strlen(char *s);
-int			ft_show(t_infos *piles, int success, char *cmd);
+int			stock(t_infos *piles, int success, char *cmd);
 // utils_lst.c
 t_element	*ft_lstnew(int nombre, int *tab);
 t_element	*ft_lstadd_back(t_element *lst, int nombre, int *tab);
 t_element	*ft_lstlast(t_element *lst);
-int			ft_lst_pt(t_infos *piles);
+uint		find_range_up(t_element *lst);
 // utils_lst_mv.c
 int			ft_show_mouvs(t_infos *piles);
 t_mouvs		*ft_lstnew_mv(char *content);
@@ -71,16 +70,25 @@ t_mouvs		*ft_lstlast_mv(t_mouvs *lst);
 // test.c
 int			correct(t_element *lst);
 int			parse(char **av, int len);
-// test_pb.c
-int			ft_pb(t_infos *piles, t_element *lst, int limit);
+// push_a.c
+void		ft_pa(t_infos *piles);
+t_element	*find_elem(t_infos *piles);
+int			count_mv(t_infos *piles, int mv_a, int mv_b);
+void		ft_mv_pa(t_infos *piles, t_element *elem, int mv_a, int mv_b);
+// push_b.c
+void		ft_push_b(t_infos *piles, t_element *lst, int limit);
+void		organize_b(t_infos *piles, int chunk, int reste);
 int			ft_find_count_ra(t_element	*lst, int limit);
 int			ft_find_count_rra(t_element	*lst, int limit);
-// test_pa.c
-void		ft_pa(t_infos *piles);
-int			count_correct(t_infos *piles, t_element *last);
 // free.c
 void		ft_free_piles(t_infos *piles);
 void		ft_free_element(t_element *lst);
+// count_mv.c
+int			is_framed(int obj, int first, int last);
+int			test_mv_ra(t_element *first, t_element *last);
+int			count_ra(t_element *first, t_element *last, t_element *obj);
+int			ft_count_a(t_infos *piles, t_element *elem);
+int			ft_count_b(t_infos *piles, t_element *elem);
 // mouvs_swap.c
 int			mv_sa(t_infos *piles);
 int			mv_sb(t_infos *piles);

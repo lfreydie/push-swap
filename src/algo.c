@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:54:23 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/16 15:08:44 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/17 14:26:20 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	algo(t_infos *piles)
 		algo_pt(piles);
 	else
 	{
-		algo_gd(piles);
-		algo_rrange(piles);
+		pb_pre_tri(piles);
+		ft_pa(piles);
 	}
 	ft_show_mouvs(piles);
 }
@@ -33,58 +33,46 @@ void	algo_pt(t_infos *piles)
 	{
 		last = ft_lstlast(piles->a);
 		if (piles->size_a == 2)
-			ft_show(piles, mv_sa(piles), "sa");
+			stock(piles, mv_sa(piles), "sa");
 		else if (piles->a->nombre > piles->a->next->nombre)
 		{
 			if ((piles->a->next->nombre < last->nombre) \
 			&& (piles->a->nombre > last->nombre))
-				ft_show(piles, mv_ra(piles), "ra");
+				stock(piles, mv_ra(piles), "ra");
 			else
-				ft_show(piles, mv_sa(piles), "sa");
+				stock(piles, mv_sa(piles), "sa");
 		}
 		else
 		{
 			if (piles->a->nombre > last->nombre)
-				ft_show(piles, mv_rra(piles), "rra");
+				stock(piles, mv_rra(piles), "rra");
 			else
-				ft_show(piles, mv_ra(piles), "ra");
+				stock(piles, mv_ra(piles), "ra");
 		}
 	}
 }
 
-void	algo_gd(t_infos *piles)
+void	pb_pre_tri(t_infos *piles)
 {
-	int	div;
-	int	mod;
-	int	n;
+	int	chunk;
+	int	reste;
 
-	div = 0;
-	mod = 0;
-	n = 0;
+	chunk = 0;
+	reste = 0;
 	while (piles->size_a != 3)
 	{
-		n = piles->size_a;
-		div = piles->size_a / 3;
-		mod = piles->size_a % 3;
-		if (div < 3)
-			ft_pb(piles, piles->a, piles->size - 3);
+		chunk = piles->size_a / 3;
+		reste = piles->size_a % 3;
+		if (chunk < 3)
+			ft_push_b(piles, piles->a, piles->size - 3);
 		else
 		{
-			while (piles->size_a > (n - (2 * div)))
+			while (piles->size_a > (piles->size_a - (2 * chunk)))
 			{
-				ft_pb(piles, piles->a, piles->size - (div + mod));
-				if (piles->b->rank > piles->size - (mod + (2 * div)))
-					ft_show(piles, mv_rb(piles), "rb");
+				ft_push_b(piles, piles->a, piles->size - (chunk + reste));
+				organize_b(piles, chunk, reste);
 			}
 		}
 	}
 	algo_pt(piles);
-}
-
-void	algo_rrange(t_infos *piles)
-{
-	while (piles->size_b)
-	{
-		
-	}
 }
