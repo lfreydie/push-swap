@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouvs_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morganeberthod <morganeberthod@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 22:30:35 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/07 13:03:24 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/19 09:32:12 by morganebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	mv_ra(t_infos *piles)
 	piles->a = tmp->next;
 	piles->a->prev = NULL;
 	tmp->next = NULL;
+	printf("on veut last de piles->a | mv_ra : \n");
 	last = ft_lstlast(piles->a);
 	last->next = tmp;
 	tmp->prev = last;
@@ -36,6 +37,7 @@ int	mv_rb(t_infos *piles)
 	piles->b = tmp->next;
 	piles->b->prev = NULL;
 	tmp->next = NULL;
+	printf("on veut last de piles->b | mv_rb : \n");
 	last = ft_lstlast(piles->b);
 	last->next = tmp;
 	tmp->prev = last;

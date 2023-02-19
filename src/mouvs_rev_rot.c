@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouvs_rev_rot.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morganeberthod <morganeberthod@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 22:31:36 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/07 12:05:28 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/19 09:32:38 by morganebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	mv_rra(t_infos *piles)
 	t_element	*tmp;
 	t_element	*last;
 
+	printf("on veut last de piles->a | mv_rra : \n");
 	tmp = ft_lstlast(piles->a);
 	last = tmp->prev;
 	last->next = NULL;
@@ -32,6 +33,7 @@ int	mv_rrb(t_infos *piles)
 	t_element	*tmp;
 	t_element	*last;
 
+	printf("on veut last de piles->b | mv_rrb : \n");
 	tmp = ft_lstlast(piles->b);
 	last = tmp->prev;
 	last->next = NULL;

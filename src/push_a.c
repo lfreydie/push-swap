@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morganeberthod <morganeberthod@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:22:02 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/17 15:15:42 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/19 10:05:58 by morganebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_pa(t_infos *piles)
 	while (piles->b)
 	{
 		elem = find_elem(piles);
+		printf("element retenu : %d \n", elem->nombre);
 		ft_mv_pa(piles, ft_count_a(piles, elem), ft_count_b(piles, elem));
 		stock(piles, mv_pa(piles), "pa");
 	}

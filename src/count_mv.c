@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_mv.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morganeberthod <morganeberthod@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:00:10 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/17 14:42:56 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/19 10:11:41 by morganebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	is_framed(int obj, int first, int last)
 int	test_mv_ra(t_element *first, t_element *last)
 {
 	last = first;
-	first = last->next;
+	first = first->next;
 	return (1);
 }
 
@@ -56,6 +56,7 @@ int	ft_count_a(t_infos *piles, t_element *elem)
 	t_element	*last_a;
 
 	first_a = piles->a;
+	printf("on veut last de piles->a pour %d | ft_count_a : \n", elem->nombre);
 	last_a = ft_lstlast(piles->a);
 	count = count_ra(first_a, last_a, elem);
 	return (count);

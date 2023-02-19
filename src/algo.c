@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morganeberthod <morganeberthod@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:54:23 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/17 15:24:46 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/19 09:33:07 by morganebert      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	algo_pt(t_infos *piles)
 	last = NULL;
 	while (!correct(piles->a))
 	{
+		printf("on veut last de piles->a | algo_pt : \n");
 		last = ft_lstlast(piles->a);
 		if (piles->size_a == 2)
 			stock(piles, mv_sa(piles), "sa");
