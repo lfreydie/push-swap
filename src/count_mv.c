@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:00:10 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/20 14:57:35 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:44:21 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,9 @@ int	ft_count_a(t_infos *piles, t_element *elem)
 	t_element	*first_a;
 	t_element	*last_a;
 
+	count = 0;
 	first_a = piles->a;
-	printf("on veut last de piles->a pour %d | ft_count_a : \n", elem->nombre);
-	printf("first de piles->a = %d \n", first_a->nombre);
 	last_a = ft_lstlast(piles->a);
-	printf("last de piles->a = %d \n", last_a->nombre);
 	count = count_ra(first_a, last_a, elem);
 	return (count);
 }

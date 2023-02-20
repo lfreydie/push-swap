@@ -6,11 +6,11 @@
 #    By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 15:01:41 by lfreydie          #+#    #+#              #
-#    Updated: 2023/02/17 14:47:20 by lfreydie         ###   ########.fr        #
+#    Updated: 2023/02/20 17:52:55 by lfreydie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = cc
 
 FLAGS = -Wall -Wextra -Werror -g
 

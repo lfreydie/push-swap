@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:51:05 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/07 15:26:14 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:33:22 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_infos	*init(int len, char **av)
 		piles->a = init_data(av, len, piles->tab);
 		if (!piles->a)
 			return (ft_free_piles(piles), write(1, "Error\n", 6), NULL);
+		piles->b = NULL;
+		piles->mouvs = NULL;
 		piles->size = len;
 		piles->size_a = piles->size;
 		piles->size_b = 0;
@@ -44,13 +46,13 @@ t_element	*init_data(char **av, int len, int *tab)
 	int			i;
 
 	i = 0;
-	list = ft_lstnew(atoi(av[i]), tab);
+	list = ft_lstnew(ft_atoi(av[i]), tab, len);
 	if (!list)
 		return (NULL);
 	i++;
 	while (i < len)
 	{
-		new = ft_lstadd_back(list, ft_atoi(av[i]), tab);
+		new = ft_lstadd_back(list, ft_atoi(av[i]), tab, len);
 		if (!new)
 			return (NULL);
 		i++;
@@ -65,7 +67,7 @@ int	*create_tab(char **av, int len)
 	int	success;
 
 	i = 0;
-	tab = malloc(sizeof(*tab) * len);
+	tab = malloc(sizeof(tab) * len);
 	if (!tab)
 		return (NULL);
 	while (i < len)
@@ -85,8 +87,6 @@ int	sort_tab(int *tab, int len)
 	int	j;
 	int	tmp;
 
-	if (!tab)
-		return (0);
 	i = 0;
 	while (i < len - 1)
 	{

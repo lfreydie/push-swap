@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 22:31:36 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/20 12:02:44 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/20 20:26:26 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ int	mv_rra(t_infos *piles)
 	t_element	*tmp;
 	t_element	*last;
 
-	printf("on veut last de piles->a | mv_rra : \n\n\n");
+	if (!piles->a->next)
+		return (0);
 	tmp = ft_lstlast(piles->a);
-	printf("element a mettre en premier : %d \n\n\n", tmp->nombre);
-	printf("element a mettre en premier : %d \n\n\n", tmp->prev->nombre);
 	last = tmp->prev;
-	printf("element a mettre en dernier : %d \n\n\n", last->nombre);
 	last->next = NULL;
 	piles->a->prev = tmp;
 	tmp->next = piles->a;
@@ -36,7 +34,8 @@ int	mv_rrb(t_infos *piles)
 	t_element	*tmp;
 	t_element	*last;
 
-	printf("on veut last de piles->b | mv_rrb : \n");
+	if (!piles->b->next)
+		return (0);
 	tmp = ft_lstlast(piles->b);
 	last = tmp->prev;
 	last->next = NULL;

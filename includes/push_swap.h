@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:54:52 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/20 16:28:05 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:34:29 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int			ft_atoi(const char *nptr);
 int			ft_strlen(char *s);
 int			stock(t_infos *piles, int success, char *cmd);
 // utils_lst.c
-t_element	*ft_lstnew(int nombre, int *tab);
-t_element	*ft_lstadd_back(t_element *lst, int nombre, int *tab);
+t_element	*ft_lstnew(int nombre, int *tab, int len);
+t_element	*ft_lstadd_back(t_element *lst, int nombre, int *tab, int len);
 t_element	*ft_lstlast(t_element *lst);
 int			find_range_up(t_element *lst);
 // utils_lst_mv.c
@@ -84,6 +84,7 @@ int			ft_find_count_rra(t_element	*lst, int limit);
 // free.c
 void		ft_free_piles(t_infos *piles);
 void		ft_free_element(t_element *lst);
+void		ft_free_mouvs(t_mouvs *lst);
 // count_mv.c
 int			is_framed(int obj, int first, int last);
 int			test_mv_ra(t_element *first, t_element *last);

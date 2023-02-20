@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_b.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morganeberthod <morganeberthod@student.    +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:21:01 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/19 09:31:36 by morganebert      ###   ########.fr       */
+/*   Updated: 2023/02/20 16:39:28 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int	ft_find_count_rra(t_element	*lst, int limit)
 	int	count;
 
 	count = 1;
-	printf("on veut last de piles->a | push_b : \n");
 	lst = ft_lstlast(lst);
 	while (lst)
 	{

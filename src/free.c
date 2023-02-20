@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lefreydier <lefreydier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 16:03:53 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/01/30 21:40:23 by lefreydier       ###   ########.fr       */
+/*   Updated: 2023/02/20 16:37:23 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ft_free_piles(t_infos *piles)
 			ft_free_element(piles->b);
 		if (piles->tab)
 			free(piles->tab);
+		if (piles->mouvs)
+			ft_free_mouvs(piles->mouvs);
 		return (free(piles));
 	}
 }
@@ -31,6 +33,23 @@ void	ft_free_piles(t_infos *piles)
 void	ft_free_element(t_element *lst)
 {
 	t_element	*tmp;
+
+	if (!lst)
+		return ;
+	if (lst)
+	{
+		while (lst)
+		{
+			tmp = lst->next;
+			free(lst);
+			lst = tmp;
+		}
+	}
+}
+
+void	ft_free_mouvs(t_mouvs *lst)
+{
+	t_mouvs	*tmp;
 
 	if (!lst)
 		return ;

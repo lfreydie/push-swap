@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:22:02 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/20 15:13:58 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:24:02 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,9 @@ void	ft_pa(t_infos *piles)
 	{
 		elem = find_elem(piles);
 		elemn = elem->nombre;
-		printf("element retenu : %d \n", elem->nombre);
 		ft_mv_pa(piles, ft_count_a(piles, elem), ft_count_b(piles, elem));
 		stock(piles, mv_pa(piles), "pa");
 	}
-	while (piles->a->rank != 1)
-		stock(piles, mv_rra(piles), "rra");
 }
 
 t_element	*find_elem(t_infos *piles)
@@ -40,6 +37,7 @@ t_element	*find_elem(t_infos *piles)
 	int			minmv;
 	int			mv;
 
+	mv = 2147483647;
 	range_up = find_range_up(piles->b);
 	lst = piles->b;
 	while (lst)
@@ -61,38 +59,40 @@ t_element	*find_elem(t_infos *piles)
 
 int	count_mv(t_infos *piles, int mv_a, int mv_b)
 {
-	if ((mv_a > (piles->size_a / 2)) && (mv_b > (piles->size_b / 2)))
+	if ((mv_a >= (piles->size_a / 2 + piles->size_a % 2)) && \
+		(mv_b >= (piles->size_b / 2 + piles->size_b % 2)))
 	{
 		mv_a = piles->size_a - mv_a;
 		mv_b = piles->size_b - mv_b;
 	}
-	if ((mv_a <= (piles->size_a / 2)) && (mv_b <= (piles->size_b / 2)))
+	if ((mv_a < (piles->size_a / 2 + piles->size_a % 2)) && \
+		(mv_b < (piles->size_b / 2 + piles->size_b % 2)))
 	{
 		if (mv_a > mv_b)
 			return (mv_a);
 		else
 			return (mv_b);
 	}
-	else if ((mv_a > (piles->size_a / 2)))
+	else if ((mv_a >= (piles->size_a / 2 + piles->size_a % 2)))
 		mv_a = piles->size_a - mv_a;
-	else if ((mv_b > (piles->size_b / 2)))
+	else if ((mv_b >= (piles->size_b / 2 + piles->size_b % 2)))
 		mv_b = piles->size_b - mv_b;
 	return (mv_a + mv_b);
 }
 
 void	ft_mv_pa(t_infos *piles, int mv_a, int mv_b)
 {
-	while ((mv_a > 0 && mv_a <= piles->size_a) || \
-		(mv_b > 0 && mv_b <= piles->size_b))
+	while ((mv_a > 0 && mv_a < piles->size_a) || \
+		(mv_b > 0 && mv_b < piles->size_b))
 	{
-		if (mv_a > (piles->size_a / 2 + piles->size_a % 2) && \
-			piles->size_a >= mv_a)
+		if (mv_a >= (piles->size_a / 2 + piles->size_a % 2) && \
+			piles->size_a > mv_a)
 			mv_a += stock(piles, mv_rra(piles), "rra");
 		else if ((mv_a < piles->size_a / 2 + piles->size_a % 2) && \
 			(mv_a > 0))
 			mv_a -= stock(piles, mv_ra(piles), "ra");
-		if (mv_b > (piles->size_b / 2 + piles->size_b % 2) && \
-			piles->size_b >= mv_b)
+		if (mv_b >= (piles->size_b / 2 + piles->size_b % 2) && \
+			piles->size_b > mv_b)
 			mv_b += stock(piles, mv_rrb(piles), "rrb");
 		else if ((mv_b < piles->size_b / 2 + piles->size_b % 2) && \
 			(mv_b > 0))

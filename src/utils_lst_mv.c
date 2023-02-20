@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:35:36 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/20 16:26:47 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:39:38 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ t_mouvs	*ft_lstnew_mv(char *content)
 		return (NULL);
 	new->mv = content;
 	new->next = NULL;
-	printf("elem nv mv : %s \n", new->mv);
 	return (new);
 }
 
@@ -80,7 +79,6 @@ t_mouvs	*ft_lstadd_back_mv(t_mouvs *lst, char *content)
 	new = NULL;
 	if (lst)
 	{
-		printf("On veut ajouter %s | ft_lst_add_back_mv : \n", content);
 		tmp = ft_lstlast_mv(lst);
 		new = ft_lstnew_mv(content);
 		if (!new)
@@ -95,10 +93,6 @@ t_mouvs	*ft_lstlast_mv(t_mouvs *lst)
 	if (!lst)
 		return (NULL);
 	while (lst->next)
-	{
-		printf("elem mv : %s , ", lst->mv);
 		lst = lst->next;
-	}
-	printf("elem mv : %s\n", lst->mv);
 	return (lst);
 }
