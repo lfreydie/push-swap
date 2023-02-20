@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 22:29:59 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/09 12:20:01 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:22:16 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,13 @@ int	mv_pa(t_infos *piles)
 	if (!piles->b)
 		return (0);
 	tmp_b = piles->b;
-	piles->b = tmp_b->next;
-	piles->b->prev = NULL;
+	if (tmp_b->next)
+	{
+		piles->b = tmp_b->next;
+		piles->b->prev = NULL;
+	}
+	else
+		piles->b = NULL;
 	tmp_b->next = piles->a;
 	if (tmp_b->next)
 		piles->a->prev = tmp_b;
@@ -37,8 +42,13 @@ int	mv_pb(t_infos *piles)
 	if (!piles->a)
 		return (0);
 	tmp_a = piles->a;
-	piles->a = tmp_a->next;
-	piles->a->prev = NULL;
+	if (tmp_a->next)
+	{
+		piles->a = tmp_a->next;
+		piles->a->prev = NULL;
+	}
+	else
+		piles->a = NULL;
 	tmp_a->next = piles->b;
 	if (tmp_a->next)
 		piles->b->prev = tmp_a;

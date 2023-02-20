@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_mv.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morganeberthod <morganeberthod@student.    +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:00:10 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/19 10:11:41 by morganebert      ###   ########.fr       */
+/*   Updated: 2023/02/20 14:57:35 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,27 @@ int	is_framed(int obj, int first, int last)
 	return (0);
 }
 
-int	test_mv_ra(t_element *first, t_element *last)
-{
-	last = first;
-	first = first->next;
-	return (1);
-}
-
 int	count_ra(t_element *first, t_element *last, t_element *obj)
 {
 	int	count;
+	int	ra;
 
 	count = 0;
+	ra = 0;
 	while (!is_framed(obj->rank, first->rank, last->rank))
 	{
+		ra = count;
 		if ((first->rank > obj->rank) \
 		&& (last->rank > obj->rank) && (first->rank > last->rank))
-			count += test_mv_ra(first, last);
-		else if (first->rank < obj->rank)
+			count++;
+		else if ((first->rank < obj->rank) && (last->rank < obj->rank))
+			count++;
+		else if ((first->rank < obj->rank) && (last->rank > obj->rank))
+			count++;
+		if (ra < count)
 		{
-			if (last->rank < obj->rank)
-				count += test_mv_ra(first, last);
-			else if (last->rank > obj->rank)
-				count += test_mv_ra(first, last);
+			last = first;
+			first = first->next;
 		}
 		if (!first)
 			return (-1);
@@ -57,7 +55,9 @@ int	ft_count_a(t_infos *piles, t_element *elem)
 
 	first_a = piles->a;
 	printf("on veut last de piles->a pour %d | ft_count_a : \n", elem->nombre);
+	printf("first de piles->a = %d \n", first_a->nombre);
 	last_a = ft_lstlast(piles->a);
+	printf("last de piles->a = %d \n", last_a->nombre);
 	count = count_ra(first_a, last_a, elem);
 	return (count);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morganeberthod <morganeberthod@student.    +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:54:23 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/19 09:33:07 by morganebert      ###   ########.fr       */
+/*   Updated: 2023/02/20 16:20:58 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void	algo(t_infos *piles)
 	{
 		pb_pre_tri(piles);
 		ft_pa(piles);
+	}
+	while (piles->a->rank != 1)
+	{
+		stock(piles, mv_rra(piles), "rra");
 	}
 	ft_show_mouvs(piles);
 }

@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:55:16 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/07 12:02:35 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/20 12:12:58 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@ int	mv_sa(t_infos *piles)
 {
 	t_element	*tmp_a_f;
 	t_element	*tmp_a_s;
+	t_element	*tmp_a_l;
 
 	if (!piles->a || !piles->a->next)
 		return (0);
+	tmp_a_l = ft_lstlast(piles->a);
 	tmp_a_f = piles->a;
 	tmp_a_s = piles->a->next;
 	tmp_a_f->next = tmp_a_s->next;
 	tmp_a_f->prev = tmp_a_s;
 	tmp_a_s->next = tmp_a_f;
 	tmp_a_s->prev = NULL;
+	tmp_a_l->prev = tmp_a_f;
 	piles->a = tmp_a_s;
 	return (1);
 }
@@ -33,15 +36,18 @@ int	mv_sb(t_infos *piles)
 {
 	t_element	*tmp_b_f;
 	t_element	*tmp_b_s;
+	t_element	*tmp_b_l;
 
 	if (!piles->b || !piles->b->next)
 		return (0);
+	tmp_b_l = ft_lstlast(piles->b);
 	tmp_b_f = piles->b;
 	tmp_b_s = piles->b->next;
 	tmp_b_f->next = tmp_b_s->next;
 	tmp_b_f->prev = tmp_b_s;
 	tmp_b_s->next = tmp_b_f;
 	tmp_b_s->prev = NULL;
+	tmp_b_l->prev = tmp_b_f;
 	piles->b = tmp_b_s;
 	return (1);
 }

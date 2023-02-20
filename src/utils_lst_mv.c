@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_lst_mv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morganeberthod <morganeberthod@student.    +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:35:36 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/19 10:01:24 by morganebert      ###   ########.fr       */
+/*   Updated: 2023/02/20 16:26:47 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,40 @@ int	ft_show_mouvs(t_infos *piles)
 	cmd = piles->mouvs;
 	while (cmd)
 	{
-		write(1, cmd->mv, ft_strlen(cmd->mv));
+		if ((ft_cmp(cmd, "rra") && ft_cmp(cmd->next, "rrb")) || \
+			(ft_cmp(cmd, "rrb") && ft_cmp(cmd->next, "rra")))
+		{
+			cmd = cmd->next;
+			write(1, "rrr", 3);
+		}
+		else if ((ft_cmp(cmd, "ra") && ft_cmp(cmd->next, "rb")) || \
+			(ft_cmp(cmd, "rb") && ft_cmp(cmd->next, "ra")))
+		{
+			cmd = cmd->next;
+			write(1, "rr", 2);
+		}
+		else
+			write(1, cmd->mv, ft_strlen(cmd->mv));
 		write(1, "\n", 1);
 		cmd = cmd->next;
+	}
+	return (1);
+}
+
+int	ft_cmp(t_mouvs *mouv, char *cmd)
+{
+	char	*mv;
+	int		i;
+
+	if (!mouv)
+		return (0);
+	mv = mouv->mv;
+	i = 0;
+	while (mv[i] || cmd[i])
+	{
+		if (mv[i] != cmd[i])
+			return (0);
+		i++;
 	}
 	return (1);
 }

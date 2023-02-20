@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morganeberthod <morganeberthod@student.    +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:22:02 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/19 10:05:58 by morganebert      ###   ########.fr       */
+/*   Updated: 2023/02/20 15:13:58 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 void	ft_pa(t_infos *piles)
 {
 	t_element	*elem;
+	int			elemn;
 
 	elem = NULL;
+	(void)elemn;
+	elemn = 0;
 	while (piles->b)
 	{
 		elem = find_elem(piles);
+		elemn = elem->nombre;
 		printf("element retenu : %d \n", elem->nombre);
 		ft_mv_pa(piles, ft_count_a(piles, elem), ft_count_b(piles, elem));
 		stock(piles, mv_pa(piles), "pa");
@@ -82,14 +86,16 @@ void	ft_mv_pa(t_infos *piles, int mv_a, int mv_b)
 		(mv_b > 0 && mv_b <= piles->size_b))
 	{
 		if (mv_a > (piles->size_a / 2 + piles->size_a % 2) && \
-			piles->size_a <= mv_a)
+			piles->size_a >= mv_a)
 			mv_a += stock(piles, mv_rra(piles), "rra");
-		else if (mv_a < piles->size_a / 2 + piles->size_a % 2)
+		else if ((mv_a < piles->size_a / 2 + piles->size_a % 2) && \
+			(mv_a > 0))
 			mv_a -= stock(piles, mv_ra(piles), "ra");
 		if (mv_b > (piles->size_b / 2 + piles->size_b % 2) && \
-			piles->size_b <= mv_b)
+			piles->size_b >= mv_b)
 			mv_b += stock(piles, mv_rrb(piles), "rrb");
-		else if (mv_b < piles->size_b / 2 + piles->size_b % 2)
+		else if ((mv_b < piles->size_b / 2 + piles->size_b % 2) && \
+			(mv_b > 0))
 			mv_b -= stock(piles, mv_rb(piles), "rb");
 	}
 }

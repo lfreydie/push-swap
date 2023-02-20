@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:54:52 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/17 14:45:53 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:28:05 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_element	*ft_lstlast(t_element *lst);
 int			find_range_up(t_element *lst);
 // utils_lst_mv.c
 int			ft_show_mouvs(t_infos *piles);
+int			ft_cmp(t_mouvs *mv, char *cmd);
 t_mouvs		*ft_lstnew_mv(char *content);
 t_mouvs		*ft_lstadd_back_mv(t_mouvs *lst, char *content);
 t_mouvs		*ft_lstlast_mv(t_mouvs *lst);
