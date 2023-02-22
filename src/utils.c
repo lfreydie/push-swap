@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:12:10 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/20 18:31:42 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/22 15:44:44 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,11 @@ int	stock(t_infos *piles, int success, char *cmd)
 		else
 			new = ft_lstadd_back_mv(piles->mouvs, cmd);
 		if (!new)
-			return (0);
+		{
+			write(1, "Error\n", 6);
+			ft_free_piles(piles);
+			exit (0);
+		}
 	}
 	return (success);
 }

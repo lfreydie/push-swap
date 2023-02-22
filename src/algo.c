@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:54:23 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/20 20:34:38 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/22 15:15:35 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	algo(t_infos *piles)
 {
 	if (piles->size_a <= 3)
 		algo_pt(piles);
-	else
+	else if (piles->size_a > 3 && !correct(piles->a))
 	{
 		pb_pre_tri(piles);
 		algo_pt(piles);

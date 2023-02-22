@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:51:05 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/20 18:33:22 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/22 15:39:20 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_infos	*init(int len, char **av)
 
 	piles = malloc(sizeof(*piles));
 	if (!piles)
-		return (NULL);
+		return (write(1, "Error\n", 6), NULL);
 	piles->b = NULL;
 	if (parse(av, len))
 	{

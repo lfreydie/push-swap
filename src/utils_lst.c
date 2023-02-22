@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:35:36 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/20 18:28:18 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/22 15:42:09 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_element	*ft_lstadd_back(t_element *lst, int nombre, int *tab, int len)
 	{
 		tmp = ft_lstlast(lst);
 		new = ft_lstnew(nombre, tab, len);
-		if (!new)
+		if (!new || !tmp)
 			return (NULL);
 		tmp->next = new;
 		new->prev = tmp;
