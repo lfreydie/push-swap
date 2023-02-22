@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:51:05 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/22 15:39:20 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/22 18:15:43 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ t_infos	*init(int len, char **av)
 
 	piles = malloc(sizeof(*piles));
 	if (!piles)
-		return (write(1, "Error\n", 6), NULL);
-	piles->b = NULL;
+		return (write(2, "Error\n", 6), NULL);
 	if (parse(av, len))
 	{
-		piles->tab = create_tab(av, len);
-		if (!piles->tab)
-			return (ft_free_piles(piles), write(1, "Error\n", 6), NULL);
-		piles->a = init_data(av, len, piles->tab);
-		if (!piles->a)
-			return (ft_free_piles(piles), write(1, "Error\n", 6), NULL);
+		piles->a = NULL;
 		piles->b = NULL;
 		piles->mouvs = NULL;
+		piles->tab = create_tab(av, len);
+		if (!piles->tab)
+			return (ft_free_piles(piles), write(2, "Error\n", 6), NULL);
+		piles->a = init_data(av, len, piles->tab);
+		if (!piles->a)
+			return (ft_free_piles(piles), write(2, "Error\n", 6), NULL);
 		piles->size = len;
 		piles->size_a = piles->size;
 		piles->size_b = 0;
 	}
 	else
-		return (ft_free_piles(piles), write(1, "Error\n", 6), NULL);
+		return (free(piles), write(2, "Error\n", 6), NULL);
 	return (piles);
 }
 
@@ -77,7 +77,7 @@ int	*create_tab(char **av, int len)
 	}
 	success = sort_tab(tab, len);
 	if (!success)
-		return (NULL);
+		return (free(tab), NULL);
 	return (tab);
 }
 

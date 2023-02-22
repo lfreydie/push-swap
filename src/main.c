@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morganeberthod <morganeberthod@student.    +#+  +:+       +#+        */
+/*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:53:14 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/19 09:07:17 by morganebert      ###   ########.fr       */
+/*   Updated: 2023/02/22 18:15:43 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ int	main(int ac, char **av)
 
 	piles = NULL;
 	if (ac <= 2)
+	{
+		if (ac == 2 && !ft_isnbr(av[1]))
+			return (write(2, "Error\n", 6), 1);
 		return (0);
+	}
 	else
 	{
 		piles = init(ac - 1, av + 1);
