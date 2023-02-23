@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:00:10 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/20 16:44:21 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/23 18:45:27 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	count_ra(t_element *first, t_element *last, t_element *obj)
 	int	ra;
 
 	count = 0;
-	ra = 0;
 	while (!is_framed(obj->rank, first->rank, last->rank))
 	{
 		ra = count;
@@ -53,7 +52,6 @@ int	ft_count_a(t_infos *piles, t_element *elem)
 	t_element	*first_a;
 	t_element	*last_a;
 
-	count = 0;
 	first_a = piles->a;
 	last_a = ft_lstlast(piles->a);
 	count = count_ra(first_a, last_a, elem);

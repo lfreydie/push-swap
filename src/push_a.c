@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 15:22:02 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/20 19:24:02 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/23 18:48:00 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,11 @@
 void	ft_pa(t_infos *piles)
 {
 	t_element	*elem;
-	int			elemn;
 
 	elem = NULL;
-	(void)elemn;
-	elemn = 0;
 	while (piles->b)
 	{
 		elem = find_elem(piles);
-		elemn = elem->nombre;
 		ft_mv_pa(piles, ft_count_a(piles, elem), ft_count_b(piles, elem));
 		stock(piles, mv_pa(piles), "pa");
 	}
@@ -40,6 +36,7 @@ t_element	*find_elem(t_infos *piles)
 	mv = 2147483647;
 	range_up = find_range_up(piles->b);
 	lst = piles->b;
+	elem = piles->b;
 	while (lst)
 	{
 		if (lst->range == range_up)

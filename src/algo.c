@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:54:23 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/22 15:15:35 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/23 18:44:40 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	algo(t_infos *piles)
 	while (piles->a->rank != 1)
 		stock(piles, mv_rra(piles), "rra");
 	ft_show_mouvs(piles);
-	ft_free_piles(piles);
 }
 
 void	algo_pt(t_infos *piles)
@@ -62,8 +61,6 @@ void	pb_pre_tri(t_infos *piles)
 	int	reste;
 	int	size_a;
 
-	chunk = 0;
-	reste = 0;
 	while (piles->size_a != 3)
 	{
 		size_a = piles->size_a;

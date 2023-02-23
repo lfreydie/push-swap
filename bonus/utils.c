@@ -6,11 +6,11 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:12:10 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/23 15:49:33 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/23 18:40:49 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/bonus.h"
 
 int	ft_isnbr(const char *str)
 {
@@ -76,25 +76,16 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-int	stock(t_infos *piles, int success, char *cmd)
+int	ft_cmp(char *mouv, char *cmd)
 {
-	t_mouvs	*new;
+	int		i;
 
-	if (success)
+	i = 0;
+	while (mouv[i] || cmd[i])
 	{
-		if (!piles->mouvs)
-		{
-			new = ft_lstnew_mv(cmd);
-			piles->mouvs = new;
-		}
-		else
-			new = ft_lstadd_back_mv(piles->mouvs, cmd);
-		if (!new)
-		{
-			write(2, "Error\n", 6);
-			ft_free_piles(piles);
-			exit (0);
-		}
+		if (mouv[i] != cmd[i])
+			return (0);
+		i++;
 	}
-	return (success);
+	return (1);
 }

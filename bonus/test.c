@@ -6,11 +6,11 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:55:50 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/23 17:50:27 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:49:55 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/bonus.h"
 
 int	correct(t_element *lst)
 {
@@ -39,4 +39,13 @@ int	parse(char **av, int len)
 			return (0);
 	}
 	return (1);
+}
+
+int	ft_check_piles(t_infos *piles)
+{
+	if (piles->b)
+		return (write(1, "KO\n", 3), 0);
+	if (!correct(piles->a))
+		return (write(1, "KO\n", 3), 0);
+	return (write(1, "OK\n", 3), 1);
 }

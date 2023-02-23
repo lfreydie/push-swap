@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 22:31:36 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/20 20:26:26 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/23 18:35:26 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	mv_rra(t_infos *piles)
 	t_element	*tmp;
 	t_element	*last;
 
-	if (!piles->a->next)
+	if (!piles->a || !piles->a->next)
 		return (0);
 	tmp = ft_lstlast(piles->a);
 	last = tmp->prev;
@@ -34,7 +34,7 @@ int	mv_rrb(t_infos *piles)
 	t_element	*tmp;
 	t_element	*last;
 
-	if (!piles->b->next)
+	if (!piles->b || !piles->b->next)
 		return (0);
 	tmp = ft_lstlast(piles->b);
 	last = tmp->prev;
@@ -48,7 +48,9 @@ int	mv_rrb(t_infos *piles)
 
 int	mv_rrr(t_infos *piles)
 {
-	mv_rra(piles);
-	mv_rrb(piles);
+	if (piles->a && piles->a->next)
+		mv_rra(piles);
+	if (piles->b && piles->b->next)
+		mv_rrb(piles);
 	return (1);
 }

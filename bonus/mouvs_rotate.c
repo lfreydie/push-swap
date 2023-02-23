@@ -6,11 +6,11 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 22:30:35 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/23 18:34:11 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/23 18:04:49 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/bonus.h"
 
 int	mv_ra(t_infos *piles)
 {

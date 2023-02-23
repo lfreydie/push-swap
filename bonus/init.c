@@ -6,11 +6,11 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:51:05 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/23 18:41:43 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:55:20 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/bonus.h"
 
 t_infos	*init(int len, char **av)
 {
@@ -23,7 +23,6 @@ t_infos	*init(int len, char **av)
 	{
 		piles->a = NULL;
 		piles->b = NULL;
-		piles->mouvs = NULL;
 		piles->tab = create_tab(av, len);
 		if (!piles->tab)
 			return (ft_free_piles(piles), write(2, "Error\n", 6), NULL);

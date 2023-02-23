@@ -6,11 +6,11 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:35:36 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/23 18:42:17 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:53:49 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/bonus.h"
 
 t_element	*ft_lstnew(int nombre, int *tab, int len)
 {
@@ -28,7 +28,6 @@ t_element	*ft_lstnew(int nombre, int *tab, int len)
 			new->rank = i + 1;
 		i++;
 	}
-	new->range = 0;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);
@@ -59,18 +58,4 @@ t_element	*ft_lstlast(t_element *lst)
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
-}
-
-int	find_range_up(t_element *lst)
-{
-	int	range_up;
-
-	range_up = 0;
-	while (lst)
-	{
-		if (range_up < lst->range)
-			range_up = lst->range;
-		lst = lst->next;
-	}
-	return (range_up);
 }

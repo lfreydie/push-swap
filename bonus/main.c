@@ -6,11 +6,11 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:53:14 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/23 18:40:15 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/23 18:31:08 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/bonus.h"
 
 int	main(int ac, char **av)
 {
@@ -29,8 +29,10 @@ int	main(int ac, char **av)
 		if (!piles)
 			return (1);
 	}
-	algo(piles);
+	if (!ft_exec(piles))
+		return (ft_free_piles(piles), write(2, "Error\n", 6), 1);
+	if (!ft_check_piles(piles))
+		return (ft_free_piles(piles), 1);
 	ft_free_piles(piles);
 	return (0);
 }
-

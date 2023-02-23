@@ -1,56 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouvs_rotate.c                                     :+:      :+:    :+:   */
+/*   mouvs_swap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 22:30:35 by lefreydier        #+#    #+#             */
-/*   Updated: 2023/02/23 18:34:11 by lfreydie         ###   ########.fr       */
+/*   Created: 2023/01/30 21:55:16 by lefreydier        #+#    #+#             */
+/*   Updated: 2023/02/23 18:12:04 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/bonus.h"
 
-int	mv_ra(t_infos *piles)
+int	mv_sa(t_infos *piles)
 {
-	t_element	*tmp;
-	t_element	*last;
+	t_element	*tmp_a_f;
+	t_element	*tmp_a_s;
 
 	if (!piles->a || !piles->a->next)
 		return (0);
-	tmp = piles->a;
-	piles->a = tmp->next;
-	piles->a->prev = NULL;
-	tmp->next = NULL;
-	last = ft_lstlast(piles->a);
-	last->next = tmp;
-	tmp->prev = last;
+	tmp_a_f = piles->a;
+	tmp_a_s = piles->a->next;
+	tmp_a_f->next = tmp_a_s->next;
+	tmp_a_f->prev = tmp_a_s;
+	tmp_a_s->next = tmp_a_f;
+	tmp_a_s->prev = NULL;
+	piles->a = tmp_a_s;
 	return (1);
 }
 
-int	mv_rb(t_infos *piles)
+int	mv_sb(t_infos *piles)
 {
-	t_element	*tmp;
-	t_element	*last;
+	t_element	*tmp_b_f;
+	t_element	*tmp_b_s;
 
 	if (!piles->b || !piles->b->next)
 		return (0);
-	tmp = piles->b;
-	piles->b = tmp->next;
-	piles->b->prev = NULL;
-	tmp->next = NULL;
-	last = ft_lstlast(piles->b);
-	last->next = tmp;
-	tmp->prev = last;
+	tmp_b_f = piles->b;
+	tmp_b_s = piles->b->next;
+	tmp_b_f->next = tmp_b_s->next;
+	tmp_b_f->prev = tmp_b_s;
+	tmp_b_s->next = tmp_b_f;
+	tmp_b_s->prev = NULL;
+	piles->b = tmp_b_s;
 	return (1);
 }
 
-int	mv_rr(t_infos *piles)
+int	mv_ss(t_infos *piles)
 {
 	if (piles->a && piles->a->next)
-		mv_ra(piles);
+		mv_sa(piles);
 	if (piles->b && piles->b->next)
-		mv_rb(piles);
+		mv_sb(piles);
 	return (1);
 }
