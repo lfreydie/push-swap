@@ -6,7 +6,7 @@
 /*   By: lfreydie <lfreydie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:53:14 by lfreydie          #+#    #+#             */
-/*   Updated: 2023/02/23 18:40:15 by lfreydie         ###   ########.fr       */
+/*   Updated: 2023/02/24 12:49:31 by lfreydie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,3 @@ int	main(int ac, char **av)
 	ft_free_piles(piles);
 	return (0);
 }
-
